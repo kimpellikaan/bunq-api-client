@@ -54,6 +54,11 @@ class BunqClient
     private $permittedIps = [];
 
     /**
+     * @var string
+     */
+    private $apiUrl;
+
+    /**
      * Client constructor.
      *
      * @param KeyPair $keyPair
@@ -138,7 +143,19 @@ class BunqClient
      */
     public function getApiUrl()
     {
+        if (isset($this->apiUrl)) {
+            return $this->apiUrl;
+        }
+
         return "https://sandbox.public.api.bunq.com";
+    }
+
+    /**
+     * @param string $apiUrl
+     */
+    public function setApiUrl($apiUrl)
+    {
+        $this->apiUrl = $apiUrl;
     }
 
     /**

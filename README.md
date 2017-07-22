@@ -22,6 +22,11 @@ $userResource = new \Snijder\Bunq\Resource\UserResource($BunqClient);
 $userResource->listUsers(); //list all available users.
 ```
 
+By default the client will connect to the sandbox api. Once your ready to move to production set the api url in the `$bunqClient`:
+
+```php
+$bunqClient->setApiUrl('https://api.bunq.com');
+```
 
 ## Token Storage ##
 
