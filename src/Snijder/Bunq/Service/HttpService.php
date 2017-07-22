@@ -46,7 +46,7 @@ class HttpService
      */
     public function post(string $url, array $options): array
     {
-        return $this->requestAPI("GET", $url, $options);
+        return $this->requestAPI("POST", $url, $options);
     }
 
     /**
