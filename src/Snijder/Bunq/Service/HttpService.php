@@ -68,5 +68,4 @@ class HttpService
             throw new BunqException($e);
         }
     }
-
 }
