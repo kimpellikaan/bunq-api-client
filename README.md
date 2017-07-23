@@ -39,7 +39,7 @@ $users = $userResource->listUsers();
 $userId = $users['Response'][0]['UserPerson']['id'];
 
 // Get your accountId
-$monetaryAccountResource = new \Snijder\Bunq\Resource\MonetaryAccountResource($bunqClient, $users['Response'][0]['UserPerson']['id']);
+$monetaryAccountResource = new \Snijder\Bunq\Resource\MonetaryAccountResource($bunqClient, $usersId);
 $accounts = $monetaryAccountResource->listMonetaryAccounts();
 $accountId = $accounts['Response'][0]['MonetaryAccountBank']['id'];
 
