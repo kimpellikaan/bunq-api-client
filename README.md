@@ -28,6 +28,40 @@ By default the client will connect to the sandbox api. Once your ready to move t
 $bunqClient->setApiUrl('https://api.bunq.com');
 ```
 
+### Create a request ###
+
+Assuming that you have a `$bungClient`.
+
+```php
+// Get your userId
+$userResource = new \Snijder\Bunq\Resource\UserResource($bunqClient);
+$users = $userResource->listUsers();
+$userId = $users['Response'][0]['UserPerson']['id'];
+
+// Get your accountId
+$monetaryAccountResource = new \Snijder\Bunq\Resource\MonetaryAccountResource($bunqClient, $users['Response'][0]['UserPerson']['id']);
+$accounts = $monetaryAccountResource->listMonetaryAccounts();
+$accountId = $accounts['Response'][0]['MonetaryAccountBank']['id'];
+
+// Build a request inquiry
+$counterpart = new \Snijder\Bunq\Model\CounterPart();
+$counterpart->setType(CounterPartType::PHONE_NUMBER);
+$counterpart->setName('+316123456789');
+$counterpart->setValue('+316123456789');
+
+$request = new \Snijder\Bunq\Model\Request();
+$request->setCounterPart($counterpart);
+$request->setCurrency(Currency::EUR);
+$request->setAllowBunqme(true);
+$request->setAmount('1.00');
+$request->setDescription('Some description');
+$request->setRedirectUrl('https://www.google.com/');
+
+// Send the request
+$requestResource = new \Snijder\Bunq\Resource\RequestResource($bunqClient, $userId, $accountId);
+$requestResource->createRequest($request);
+```
+
 ## Token Storage ##
 
 This Bunq API client automatically handles the installation by itself.
