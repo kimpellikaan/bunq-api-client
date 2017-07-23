@@ -24,16 +24,6 @@ class Request
     private $description;
 
     /**
-     * @var int
-     */
-    private $attachmentId;
-
-    /**
-     * @var string
-     */
-    private $merchantReference;
-
-    /**
      * @var boolean
      */
     private $allowBunqme;
@@ -105,38 +95,6 @@ class Request
     public function setDescription(string $description)
     {
         $this->description = $description;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAttachmentId(): int
-    {
-        return $this->attachmentId;
-    }
-
-    /**
-     * @param int $attachmentId
-     */
-    public function setAttachmentId(int $attachmentId)
-    {
-        $this->attachmentId = $attachmentId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMerchantReference(): string
-    {
-        return $this->merchantReference;
-    }
-
-    /**
-     * @param string $merchantReference
-     */
-    public function setMerchantReference(string $merchantReference)
-    {
-        $this->merchantReference = $merchantReference;
     }
 
     /**

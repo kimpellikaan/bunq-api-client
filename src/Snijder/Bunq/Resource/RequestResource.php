@@ -80,13 +80,12 @@ class RequestResource implements ResourceInterface
                     "value" => $request->getCounterPart()->getValue(),
                     "name" => $request->getCounterPart()->getName()
                 ),
-                "attachment" => array(array("id" => $request->getAttachmentId())),
                 "description" => $request->getDescription(),
-                "merchant_reference" => $request->getMerchantReference(),
                 "allow_bunqme" => $request->isAllowBunqme(),
                 "redirect_url" => $request->getRedirectUrl()
             )
         ];
+
         return $this->BunqClient->getHttpService()->post(
             $this->getResourceEndpoint(),
             $options
