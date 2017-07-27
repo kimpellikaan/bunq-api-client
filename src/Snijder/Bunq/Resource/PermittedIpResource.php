@@ -70,6 +70,28 @@ class PermittedIpResource {
 	}
 
 	/**
+	 * Update existing Permitted Ip for the current user credential.
+	 *
+	 * @param Ip $ip
+	 *
+	 * @return array
+	 */
+	public function updatePermittedIp($permittedIpId, Ip $ip)
+	{
+		$options = [
+			'json' => array(
+				"ip" => $ip->getIp(),
+				"status" => $ip->getStatus()
+			)
+		];
+
+		return $this->BunqClient->getHttpService()->put(
+			$this->getResourceEndpoint() . "/" . $permittedIpId,
+			$options
+		);
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function getResourceEndpoint(): string

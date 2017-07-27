@@ -49,6 +49,16 @@ class HttpService
         return $this->requestAPI("POST", $url, $options);
     }
 
+	/**
+	 * @param string $url
+	 * @param array $options
+	 * @return array
+	 */
+	public function put(string $url, array $options): array
+	{
+		return $this->requestAPI("PUT", $url, $options);
+	}
+
     /**
      * Handles the API Calling.
      *
